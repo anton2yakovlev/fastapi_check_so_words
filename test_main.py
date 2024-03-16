@@ -25,3 +25,28 @@ async def test_get_random_dvinyatin_word():
         assert response.status_code == 200
         assert "word" in response.json()
         assert isinstance(response.json()["word"], str)
+
+
+@pytest.mark.asyncio
+async def test_get_all_words():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.get("/get-all-so-word")
+        assert response.status_code == 200
+        assert "words" in response.json()
+        assert isinstance(response.json()["words"], list)
+
+@pytest.mark.asyncio
+async def test_get_all_host_words():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.get("/get-all-host-so-word")
+        assert response.status_code == 200
+        assert "words" in response.json()
+        assert isinstance(response.json()["words"], list)
+
+@pytest.mark.asyncio
+async def test_get_all_dvinyatin_words():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.get("/get-all-dvinyatin-so-word")
+        assert response.status_code == 200
+        assert "words" in response.json()
+        assert isinstance(response.json()["words"], list)
