@@ -1,9 +1,14 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from model import get_word_response, get_words_list_response
 from words import words_accordind_host, words_accordind_Dvinyatin, words_accordind_dictionary
 
 
 app = FastAPI()
+
+@app.get("/")
+def docs_redirect():
+    return RedirectResponse(url='/docs')
 
 @app.get("/get-so-word")
 def get_random_word():
