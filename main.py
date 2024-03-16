@@ -1,14 +1,20 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from words import words_accordind_host, words_accordind_Dvinyatin, words_accordind_dictionary
 import random
 
 app = FastAPI()
 
+def form_correct_format(content):
+    return JSONResponse(content=content, media_type="application/json; charset=utf-8")
+
 def get_word_response(words_list):
-    return {"word": random.choice(words_list)}
+    content = {"word": random.choice(words_list)}
+    return form_correct_format(content)
 
 def get_words_list_response(words_list):
-    return {"words": words_list}
+    content = {"words": words_list}
+    return form_correct_format(content)
 
 @app.get("/get-so-word")
 def get_random_word():
