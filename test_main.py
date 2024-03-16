@@ -35,3 +35,10 @@ async def test_get_all_host_words():
 @pytest.mark.asyncio
 async def test_get_all_dvinyatin_words():
     await template("get-all-dvinyatin-so-word", plural=True)
+
+@pytest.mark.asyncio
+async def test_docs_redirect():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.get("/")
+        assert response.status_code in (307, 308), "Expected a 307 or 308 redirect status code"
+        assert response.headers["location"] == "/docs", "Redirection to /docs not found in the location header"
