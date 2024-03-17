@@ -4,3 +4,4 @@ pytest-asyncio==0.15.1
 gunicorn
 httpx
 pytest-asyncio
+markdown
