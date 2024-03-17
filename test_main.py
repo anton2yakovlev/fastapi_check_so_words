@@ -38,7 +38,10 @@ async def test_get_all_dvinyatin_words():
 
 @pytest.mark.asyncio
 async def test_docs_redirect():
+    expected_content = "Сервис для русских слов, оканчивающихся на \"со\""
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
         response = await ac.get("/")
-        assert response.status_code in (307, 308), "Expected a 307 or 308 redirect status code"
-        assert response.headers["location"] == "/docs", "Redirection to /docs not found in the location header"
+        assert response.status_code == 200, "Expected a 200 OK status code"
+        assert "text/html" in response.headers["content-type"], "Response content-type should be HTML"
+        html_content = response.text
+        assert expected_content in html_content, f"Expected content '{expected_content}' not found in the HTML response"

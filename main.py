@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from fastapi.responses import RedirectResponse
-from model import get_word_response, get_words_list_response
+from markdown import markdown
+from model import form_html_format, get_word_response, get_words_list_response
 from words import words_accordind_host, words_accordind_Dvinyatin, words_accordind_dictionary
 
 
@@ -8,7 +8,10 @@ app = FastAPI()
 
 @app.get("/")
 def docs_redirect():
-    return RedirectResponse(url='/docs')
+    with open('README.md', 'r', encoding='utf-8') as md_file:
+        md_text = md_file.read()
+    html = markdown(md_text, extensions=['fenced_code'])
+    return form_html_format(content=html)
 
 @app.get("/get-so-word")
 def get_random_word():

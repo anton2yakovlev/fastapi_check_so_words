@@ -62,6 +62,7 @@ words_accordind_dictionary = words_accordind_Dvinyatin + (
     "уасо",
     "Чимборасо",
     "шексо",
+    "экспрессо",
     "Эль-Пасо",
     "Энсо",
     "эспрессо",
