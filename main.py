@@ -10,7 +10,7 @@ app = FastAPI()
 def docs_redirect():
     with open('README.md', 'r', encoding='utf-8') as md_file:
         md_text = md_file.read()
-    html = markdown(md_text)
+    html = markdown(md_text, extensions=['fenced_code'])
     return form_html_format(content=html)
 
 @app.get("/get-so-word")
