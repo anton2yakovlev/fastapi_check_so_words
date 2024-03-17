@@ -58,5 +58,5 @@ print(response.text)  # Вывод содержимого ответа
 docker-compose build
 docker-compose up
 ```
+
 Проект будет доступен на localhost с помощью порта 8000, [http://localhost:8000](http://localhost:8000)
->>>>>>> 00a7bf0... update readme
