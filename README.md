@@ -11,6 +11,7 @@
 - по версии Федора Двинятина
 
 ## Как воспользовать сервисом
+
 Проект размещен по адресу [http://serso.site](http://serso.site). На странице [http://serso.site/docs](http://serso.site/docs) находится актуальная документация.
 ### Через браузер
 Чтобы получить результат, нужно просто перейти по ссылке, указанной в документации. Например, если мы хотим посмотреть список слов по мнению ведущего ЧГК, то нужно перейти по ссылке [http://serso.site/get-all-host-so-word](http://serso.site/get-all-host-so-word). Если же нужно получить только одно слово, то по ссылке [http://serso.site/get-host-so-word](http://serso.site/get-host-so-word).
@@ -48,11 +49,13 @@ print(response.text)  # Вывод содержимого ответа
 ```
 
 ## Техническое описание проекта
+
 [Github](https://github.com/anton2yakovlev/fastapi_check_so_words)
 
 Проект состоит из двух компонент: бекенд на фреймворке fast-api и веб-сервера на nginx. Всё это запаковано в docker, поэтому можно просто установить его и запустить контейнер.
 
 Для этого нужно установить docker и docker-compose. Официальный сайт: [https://docs.docker.com](https://docs.docker.com).
+
 Затем нужно сбилдить и запустить проект.
 ```
 docker-compose build
@@ -60,3 +63,4 @@ docker-compose up
 ```
 
 Проект будет доступен на localhost с помощью порта 8000, [http://localhost:8000](http://localhost:8000)
+
